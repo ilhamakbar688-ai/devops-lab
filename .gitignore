@@ -5,7 +5,7 @@
 
 app/.env
 app/.env.*
-!.app/.env.example
+!app/.env.example
 
 # n8n runtime data - NEVER commit
 docker/n8n/
