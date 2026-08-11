@@ -1,0 +1,96 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: mysql8
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: devops_lab
+      MYSQL_USER: devops
+      MYSQL_PASSWORD: devops123
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    ports:
+      - "3306:3306"
+
+    networks:
+      - devops-network
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+
+    container_name: php83
+    restart: unless-stopped
+
+    user: "1000:1000"
+    working_dir: /var/www/html
+
+    volumes:
+      - ./app:/var/www/html
+
+    depends_on:
+      - mysql
+
+    networks:
+      - devops-network
+
+  nginx:
+    image: nginx:1.28-alpine
+    container_name: nginx_server
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./app:/var/www/html
+      - ./portfolio:/var/www/portfolio
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./docker/nginx/logs:/var/log/nginx
+      - ./docker/certbot/www:/var/www/certbot
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+
+    depends_on:
+      - php
+
+    networks:
+      - devops-network
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+
+    ports:
+      - "5678:5678"
+
+    environment:
+      TZ: Asia/Jakarta
+      N8N_HOST: n8n.medinaelput.my.id
+      N8N_PORT: 5678
+      N8N_PROTOCOL: https
+      WEBHOOK_URL: https://n8n.medinaelput.my.id/
+      N8N_EDITOR_BASE_URL: https://n8n.medinaelput.my.id/
+      N8N_PROXY_HOPS: 1
+
+    volumes:
+      - ./docker/n8n:/home/node/.n8n
+
+    depends_on:
+      - mysql
+
+    networks:
+      - devops-network
+
+networks:
+  devops-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

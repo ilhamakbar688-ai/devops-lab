@@ -1,0 +1,39 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+app/.env
+app/.env.*
+!.app/.env.example
+
+# n8n runtime data - NEVER commit
+docker/n8n/
+
+# Logs
+docker/nginx/logs/
+*.log
+
+# Let's Encrypt / certificates
+docker/certbot/
+letsencrypt/
+*.pem
+*.key
+
+# Database backups
+backup/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary / backup files
+*.bak
+*.tmp
+
+# Docker overrides
+docker-compose.override.yml

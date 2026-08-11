@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ilham Akbar | DevOps Engineer</title>
+
+    <meta name="description"
+          content="Ilham Akbar - DevOps Engineer portfolio. Docker, Linux, Nginx, Laravel, MySQL, Git, GitHub and server infrastructure.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 17, 32, 0.95);
+            border-bottom: 1px solid #1f2937;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #9ca3af;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #2563eb;
+            border-radius: 20px;
+            color: #60a5fa;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.05;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero-description {
+            font-size: 19px;
+            color: #9ca3af;
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #374151;
+            color: #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 90px 0;
+            border-top: 1px solid #1f2937;
+        }
+
+        .section-title {
+            font-size: 34px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #9ca3af;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text {
+            color: #9ca3af;
+            font-size: 16px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 15px;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 7px;
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        /* PROJECT */
+
+        .project {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 35px;
+        }
+
+        .project h3 {
+            color: white;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            color: #9ca3af;
+            margin-bottom: 25px;
+        }
+
+        .project-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .project-list li {
+            padding: 9px 0;
+            color: #d1d5db;
+        }
+
+        .project-list li::before {
+            content: "✓";
+            color: #60a5fa;
+            margin-right: 10px;
+        }
+
+        /* ARCHITECTURE */
+
+        .architecture {
+            background: #020617;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 35px;
+            overflow-x: auto;
+        }
+
+        pre {
+            color: #93c5fd;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #9ca3af;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                padding: 25px;
+            }
+
+            .architecture {
+                padding: 20px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-inner">
+
+        <div class="logo">
+            Ilham<span>.</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                DevOps / IT Infrastructure
+            </div>
+
+            <h1>
+                Building reliable<br>
+                <span>infrastructure.</span>
+            </h1>
+
+            <p class="hero-description">
+                I build and manage containerized web applications,
+                Linux servers, reverse proxies, databases and
+                deployment environments using modern DevOps tools.
+            </p>
+
+            <div class="buttons">
+
+                <a class="btn btn-primary" href="#projects">
+                    View My Projects
+                </a>
+
+                <a class="btn btn-secondary"
+                   href="https://github.com/ilhamakbar688-ai"
+                   target="_blank">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <p class="section-subtitle">
+            DevOps-focused IT professional building practical infrastructure projects.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I am an IT professional with a strong interest in
+                    DevOps, server infrastructure and automation.
+                </p>
+
+                <p>
+                    My current projects focus on deploying and managing
+                    web applications using Docker, Nginx, PHP-FPM,
+                    MySQL, Laravel and Linux.
+                </p>
+
+                <p>
+                    I enjoy troubleshooting infrastructure problems,
+                    improving deployment processes and building
+                    reliable environments that can be maintained
+                    and scaled.
+                </p>
+
+            </div>
+
+            <div>
+
+                <div class="skills">
+
+                    <div class="skill">Linux</div>
+                    <div class="skill">Docker</div>
+                    <div class="skill">Nginx</div>
+                    <div class="skill">PHP-FPM</div>
+                    <div class="skill">Laravel</div>
+                    <div class="skill">MySQL</div>
+                    <div class="skill">Git</div>
+                    <div class="skill">GitHub</div>
+                    <div class="skill">SSL / HTTPS</div>
+                    <div class="skill">DNS</div>
+                    <div class="skill">n8n</div>
+                    <div class="skill">Server Administration</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Featured Project
+        </h2>
+
+        <p class="section-subtitle">
+            A real-world Dockerized web infrastructure project.
+        </p>
+
+        <div class="project">
+
+            <h3>
+                Dockerized Laravel DevOps Environment
+            </h3>
+
+            <p>
+                A production-style web environment built on a Linux VPS
+                using Docker Compose and multiple containerized services.
+            </p>
+
+            <ul class="project-list">
+
+                <li>Docker Compose infrastructure</li>
+
+                <li>Nginx reverse proxy</li>
+
+                <li>PHP 8.3-FPM</li>
+
+                <li>Laravel application</li>
+
+                <li>MySQL 8.4 database</li>
+
+                <li>phpMyAdmin database management</li>
+
+                <li>HTTPS with Let's Encrypt SSL</li>
+
+                <li>DNS and subdomain configuration</li>
+
+                <li>Git and GitHub version control</li>
+
+                <li>n8n automation server</li>
+
+            </ul>
+
+            <div class="buttons">
+
+                <a class="btn btn-primary"
+                   href="https://github.com/ilhamakbar688-ai/laravel-docker-devops"
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ARCHITECTURE -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Infrastructure Architecture
+        </h2>
+
+        <p class="section-subtitle">
+            High-level architecture of the deployed environment.
+        </p>
+
+        <div class="architecture">
+
+<pre>
+                         INTERNET
+                             │
+                             ▼
+                     ┌──────────────┐
+                     │  DNS / HTTPS │
+                     │ Let's Encrypt│
+                     └──────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │     NGINX     │
+                    │ Reverse Proxy │
+                    └───────┬───────┘
+                            │
+              ┌─────────────┼─────────────┐
+              │             │             │
+              ▼             ▼             ▼
+        ┌──────────┐  ┌──────────┐  ┌──────────┐
+        │ Laravel  │  │   n8n    │  │  Static  │
+        │ PHP-FPM  │  │Automation│  │ Portfolio │
+        └────┬─────┘  └──────────┘  └──────────┘
+             │
+             ▼
+        ┌──────────┐
+        │  MySQL   │
+        │   8.4    │
+        └──────────┘
+
+                  Docker Network
+                  devops-network
+</pre>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GITHUB -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Code & Projects
+        </h2>
+
+        <p class="section-subtitle">
+            My infrastructure and development work is maintained in GitHub.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn btn-primary"
+               href="https://github.com/ilhamakbar688-ai"
+               target="_blank">
+                GitHub Profile
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <h2 class="section-title">
+                Let's Connect
+            </h2>
+
+            <p>
+                Interested in DevOps, infrastructure,
+                automation or IT engineering opportunities?
+            </p>
+
+            <div class="buttons" style="justify-content:center;">
+
+                <a class="btn btn-primary"
+                   href="mailto:ilhamakbar688@gmail.com">
+                    Contact Me
+                </a>
+
+                <a class="btn btn-secondary"
+                   href="https://github.com/ilhamakbar688-ai"
+                   target="_blank">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 Ilham Akbar · DevOps Portfolio
+
+</footer>
+
+</body>
+</html>
